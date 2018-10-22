@@ -147,8 +147,9 @@ func getsg(id uint64) *sg {
 }
 
 func Kill(id uint64) {
-	g := getsg(id)
-	g.cancel()
+	if g := getsg(id); g != nil {
+		g.cancel()
+	}
 }
 
 func init() {
